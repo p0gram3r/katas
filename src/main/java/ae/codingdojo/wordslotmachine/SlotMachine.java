@@ -1,6 +1,9 @@
 package ae.codingdojo.wordslotmachine;
 
+import java.util.Arrays;
+
 import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang.StringUtils;
 
 public class SlotMachine {
 
@@ -19,10 +22,43 @@ public class SlotMachine {
         String word = RandomStringUtils.random(numberOfSlots, allowedCharacters);
 
         SlotMachineResult result = new SlotMachineResult();
-        result.setMatch("");
+        result.setMatch(null);
         result.setWord(word);
-        result.setWin(true);
+        result.setWin(false);
+
+        for (String wordInWordList : wordListProvider.getWordList()) {
+            if (matchesPermutations(word, wordInWordList)) {
+                result.setMatch(wordInWordList);
+                result.setWin(true);
+                break;
+            }
+        }
 
         return result;
+    }
+
+    public static boolean matchesPermutations(String a, String b) {
+
+        if (null == a || null == b) {
+            return false;
+        }
+
+        if (StringUtils.length(a) != StringUtils.length(b)) {
+            return false;
+        }
+
+        char[] charsA = a.toCharArray();
+        char[] charsB = b.toCharArray();
+
+        Arrays.sort(charsA);
+        Arrays.sort(charsB);
+
+        for (int i = 0; i < charsA.length; i++) {
+            if (charsA[i] != charsB[i]) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
