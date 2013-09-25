@@ -11,7 +11,7 @@ import java.io.InputStream;
 import org.junit.Before;
 import org.junit.Test;
 
-public class WordListProviderTest {
+public class WordListFileTest {
 
     private WordListProvider fixture;
 
@@ -19,7 +19,7 @@ public class WordListProviderTest {
     public void setUp() throws Exception {
         InputStream inStream = getClass().getClassLoader().getResourceAsStream("testWordList.txt");
 
-        fixture = new WordListProvider(inStream);
+        fixture = new WordListFile(inStream);
     }
 
     @Test
