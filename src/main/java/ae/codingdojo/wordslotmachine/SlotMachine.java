@@ -47,8 +47,8 @@ public class SlotMachine {
             return false;
         }
 
-        char[] charsA = a.toCharArray();
-        char[] charsB = b.toCharArray();
+        char[] charsA = a.toLowerCase().toCharArray();
+        char[] charsB = b.toLowerCase().toCharArray();
 
         Arrays.sort(charsA);
         Arrays.sort(charsB);
