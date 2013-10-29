@@ -42,7 +42,10 @@ public class GameOfLife {
             }
         }
 
-        return newGeneration;
+        // IMPORTANT: replace world population
+        generation = newGeneration;
+
+        return generation;
     }
 
     public char[][] prepareNexGeneration() {
@@ -72,5 +75,17 @@ public class GameOfLife {
     public boolean isAlive(int x, int y) {
         // !!! swap y and x as the are wrapping arrays uses y to access all lines !!!
         return x >= 0 && x < generation[0].length && y >= 0 && y < generation.length && generation[y][x] == LIVING_CELL;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int y = 0; y < generation.length; y++) {
+            for (int x = 0; x < generation[y].length; x++) {
+                sb.append(generation[y][x]);
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 }
