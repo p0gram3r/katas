@@ -25,6 +25,28 @@ public class GameOfLiveTest {
     }
 
     @Test
+    public void testDefaultConstructorUsesConstantChars() {
+        assertThat(world.getLivingCellChar(), is(GameOfLife.LIVING_CELL));
+        assertThat(world.getDeadCellChar(), is(GameOfLife.DEAD_CELL));
+    }
+
+    @Test
+    public void getLivingCellCharReturnsValuePassedToConstructor() {
+        char nonDefaultChar = 'a';
+
+        world = new GameOfLife(POPULATION, nonDefaultChar, GameOfLife.DEAD_CELL);
+        assertThat(world.getLivingCellChar(), is(nonDefaultChar));
+    }
+
+    @Test
+    public void getDeadCellCharReturnsValuePassedToConstructor() {
+        char nonDefaultChar = 'a';
+
+        world = new GameOfLife(POPULATION, GameOfLife.LIVING_CELL, nonDefaultChar);
+        assertThat(world.getDeadCellChar(), is(nonDefaultChar));
+    }
+
+    @Test
     public void nextGenerationCorrectlyEvolvesNextPopulation() {
         /* @formatter:off */
         char[][] expectedPopulation = new char[][] {
