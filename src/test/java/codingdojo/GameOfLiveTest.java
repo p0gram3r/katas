@@ -103,4 +103,11 @@ public class GameOfLiveTest {
     public void isAliveReturnsFalseWhenYIsTooBig() {
         assertThat(world.isAlive(0, 3), is(false));
     }
+
+    @Test
+    public void toStringReturnsExpectedStringRepresentation() {
+        String expectedStringRepresentation = ".#.\n.#.\n.#.";
+
+        assertThat(world.toString(), is(expectedStringRepresentation));
+    }
 }
