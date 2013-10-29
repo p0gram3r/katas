@@ -23,22 +23,7 @@ public class GameOfLiveTest {
         /* @formatter:on */
 
         GameOfLife world = new GameOfLife(generation1);
-        assertArrayEquals(generation2, world.getNextGeneration());
-    }
-
-    @Test
-    public void getNextGenerationForBlockWorldCorrectlyEvolvesNextGeneration() {
-        /* @formatter:off */
-        char[][] generation = new char[][] {
-                {'.', '.','.', '.'},
-                {'.', '#','#', '.'},
-                {'.', '#','#', '.'},
-                {'.', '.','.', '.'}
-        };
-        /* @formatter:on */
-
-        GameOfLife world = new GameOfLife(generation);
-        assertArrayEquals(generation, world.getNextGeneration());
+        assertArrayEquals(generation2, world.nextGeneration().getPopulation());
     }
 
     @Test
