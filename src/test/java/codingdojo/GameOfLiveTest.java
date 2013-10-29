@@ -5,12 +5,10 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class GameOfLiveTest {
 
-    @Ignore
     @Test
     public void getNextGenerationForMiniWorldCorrectlyEvolvesNextGeneration() {
         /* @formatter:off */
@@ -29,6 +27,21 @@ public class GameOfLiveTest {
     }
 
     @Test
+    public void getNextGenerationForBlockWorldCorrectlyEvolvesNextGeneration() {
+        /* @formatter:off */
+        char[][] generation = new char[][] {
+                {'.', '.','.', '.'},
+                {'.', '#','#', '.'},
+                {'.', '#','#', '.'},
+                {'.', '.','.', '.'}
+        };
+        /* @formatter:on */
+
+        GameOfLife world = new GameOfLife(generation);
+        assertArrayEquals(generation, world.getNextGeneration());
+    }
+
+    @Test
     public void countLivingNeighborsReturnsTwoForTwoLivingNeighbors() {
         /* @formatter:off */
         char[][] generation1 = new char[][] {
@@ -39,7 +52,36 @@ public class GameOfLiveTest {
         /* @formatter:on */
 
         GameOfLife world = new GameOfLife(generation1);
-        assertEquals(2, world.getLivingNeighbors(1, 1));
+        assertEquals(2, world.countLivingNeighbors(0, 0));
+        assertEquals(1, world.countLivingNeighbors(1, 0));
+    }
+
+    @Test
+    public void countLivingNeighborsReturnsOneForOneLivingNeighbor() {
+        /* @formatter:off */
+        char[][] generation1 = new char[][] {
+                {'.', '#', '.'},
+                {'.', '#', '.'},
+                {'.', '#', '.'}
+        };
+        /* @formatter:on */
+
+        GameOfLife world = new GameOfLife(generation1);
+        assertEquals(1, world.countLivingNeighbors(1, 0));
+    }
+
+    @Test
+    public void countLivingNeighborsReturnsThreeForThreeLivingNeighbors() {
+        /* @formatter:off */
+        char[][] generation1 = new char[][] {
+                {'.', '#', '.'},
+                {'.', '#', '.'},
+                {'.', '#', '.'}
+        };
+        /* @formatter:on */
+
+        GameOfLife world = new GameOfLife(generation1);
+        assertEquals(3, world.countLivingNeighbors(0, 1));
     }
 
     @Test
