@@ -1,52 +1,50 @@
 package codingdojo;
 
-import java.util.Arrays;
-import java.util.Collection;
+import org.junit.Test;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
+public class StillLifesTest extends AbstractPopulationEvolutionTest {
 
-@RunWith(Parameterized.class)
-public class StillLifesTest extends AbstractGameOfLifeEvolutionTest {
-
-    /* @formatter:off */
-    private static final char[][] BLOCK = new char[][] {
-        {'.', '.', '.', '.'},
-        {'.', '#', '#', '.'},
-        {'.', '#', '#', '.'},
-        {'.', '.', '.', '.'}
-    };
-
-    private static final char[][] BEEHIVE = new char[][] {
-        {'.', '.', '.', '.', '.', '.'},
-        {'.', '.', '#', '#', '.', '.'},
-        {'.', '#', '.', '.', '#', '.'},
-        {'.', '.', '#', '#', '.', '.'},
-        {'.', '.', '.', '.', '.', '.'}
-    };
-
-    private static final char[][] BOAT = new char[][] {
-        {'.', '.', '.', '.', '.'},
-        {'.', '#', '#', '.', '.'},
-        {'.', '#', '.', '#', '.'},
-        {'.', '.', '#', '.', '.'},
-        {'.', '.', '.', '.', '.'}
-    };
-    /* @formatter:on */
-
-    @Parameters
-    public static Collection<Object[]> data() {
+    @Test
+    public void testBlock() {
         /* @formatter:off */
-        return Arrays.asList(new Object[][] { 
-                { BLOCK}, 
-                { BEEHIVE }, 
-                { BOAT } 
-        });
+        char[][] BLOCK = new char[][] {
+            {'.', '.', '.', '.'},
+            {'.', '#', '#', '.'},
+            {'.', '#', '#', '.'},
+            {'.', '.', '.', '.'}
+        };
+
         /* @formatter:on */
+        assertPopulationEvolution(BLOCK, BLOCK);
     }
 
-    public StillLifesTest(char[][] seed) {
-        super(seed, seed);
+    @Test
+    public void testBeeHive() {
+        /* @formatter:off */
+        char[][] BEEHIVE = new char[][] {
+            {'.', '.', '.', '.', '.', '.'},
+            {'.', '.', '#', '#', '.', '.'},
+            {'.', '#', '.', '.', '#', '.'},
+            {'.', '.', '#', '#', '.', '.'},
+            {'.', '.', '.', '.', '.', '.'}
+        };
+        /* @formatter:on */
+
+        assertPopulationEvolution(BEEHIVE, BEEHIVE);
+    }
+
+    @Test
+    public void testBoat() {
+        /* @formatter:off */
+       char[][] BOAT = new char[][] {
+            {'.', '.', '.', '.', '.'},
+            {'.', '#', '#', '.', '.'},
+            {'.', '#', '.', '#', '.'},
+            {'.', '.', '#', '.', '.'},
+            {'.', '.', '.', '.', '.'}
+        };
+        /* @formatter:on */
+
+        assertPopulationEvolution(BOAT, BOAT);
     }
 }
