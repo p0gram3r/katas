@@ -13,13 +13,11 @@ import java.awt.Color;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-@Ignore
 @RunWith(Parameterized.class)
 public class CombinationValidatorTest {
 
@@ -37,11 +35,11 @@ public class CombinationValidatorTest {
                 {combine(RED, YELLOW), combine(RED, YELLOW), combine(BLACK, BLACK)},
                 
                 // 3 unique colors
-                {combine(RED, YELLOW, GREEN), combine(BLUE, BLUE, BLUE), combine(WHITE)},
+                {combine(RED, YELLOW, GREEN), combine(BLUE, BLUE, BLUE), combine()},
                 {combine(RED, YELLOW, GREEN), combine(YELLOW, BLUE, BLUE), combine(WHITE)},
                 {combine(RED, YELLOW, GREEN), combine(YELLOW, GREEN, BLUE), combine(WHITE, WHITE)},
                 {combine(RED, YELLOW, GREEN), combine(YELLOW, GREEN, RED), combine(WHITE, WHITE, WHITE)},
-                {combine(RED, YELLOW, GREEN), combine(RED, YELLOW, BLUE), combine(BLACK, BLACK, WHITE)},
+                {combine(RED, YELLOW, GREEN), combine(RED, YELLOW, BLUE), combine(BLACK, BLACK)},
                 {combine(RED, YELLOW, GREEN), combine(RED, YELLOW, GREEN), combine(BLACK, BLACK, BLACK)},
         });
         // @formatter:on
