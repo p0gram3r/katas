@@ -25,6 +25,7 @@ public class CombinationValidatorTest {
     public static Collection<Object[]> data() {
         // @formatter:off
         return Arrays.asList(new Object[][] { 
+                // 2 unique colors
                 {combine(RED, YELLOW), combine(BLUE, BLUE), combine()},
                 {combine(RED, YELLOW), combine(YELLOW, BLUE), combine(WHITE)},
                 {combine(RED, YELLOW), combine(BLUE, RED), combine(WHITE)},
@@ -33,6 +34,7 @@ public class CombinationValidatorTest {
                 {combine(RED, YELLOW), combine(BLUE, YELLOW), combine(BLACK)},
                 {combine(RED, YELLOW), combine(RED, YELLOW), combine(BLACK, BLACK)},
                 
+                // 3 unique colors
                 {combine(RED, YELLOW, GREEN), combine(BLUE, BLUE, BLUE), combine(WHITE)},
                 {combine(RED, YELLOW, GREEN), combine(YELLOW, BLUE, BLUE), combine(WHITE)},
                 {combine(RED, YELLOW, GREEN), combine(YELLOW, GREEN, BLUE), combine(WHITE, WHITE)},
