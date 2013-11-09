@@ -2,16 +2,21 @@ package codingdojo;
 
 import java.awt.Color;
 import java.util.Arrays;
+import java.util.List;
 
 public class Combination {
 
-    private Color[] colors;
+    private List<Color> colors;
 
-    public Combination(Color... colors) {
+    public Combination(List<Color> colors) {
         this.colors = colors;
     }
 
-    public Color[] getColors() {
+    public Combination(Color... colors) {
+        this.colors = Arrays.asList(colors);
+    }
+
+    public List<Color> getColors() {
         return colors;
     }
 
@@ -19,7 +24,7 @@ public class Combination {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + Arrays.hashCode(colors);
+        result = prime * result + ((colors == null) ? 0 : colors.hashCode());
         return result;
     }
 
@@ -32,7 +37,10 @@ public class Combination {
         if (getClass() != obj.getClass())
             return false;
         Combination other = (Combination) obj;
-        if (!Arrays.equals(colors, other.colors))
+        if (colors == null) {
+            if (other.colors != null)
+                return false;
+        } else if (!colors.equals(other.colors))
             return false;
         return true;
     }

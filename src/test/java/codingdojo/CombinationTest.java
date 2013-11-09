@@ -1,6 +1,7 @@
 package codingdojo;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertThat;
 
 import java.awt.Color;
@@ -22,7 +23,7 @@ public class CombinationTest {
     @Test
     public void testGetColorsReturnsConstructorParameter() {
 
-        assertThat(combination.getColors(), is(colors));
+        assertThat(combination.getColors(), contains(colors));
     }
 
     @Test
