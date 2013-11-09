@@ -1,5 +1,9 @@
 package codingdojo;
 
+import java.awt.Color;
+import java.util.LinkedList;
+import java.util.List;
+
 public class CombinationValidator {
 
     private Combination secretCombination;
@@ -14,6 +18,11 @@ public class CombinationValidator {
 
     public Combination getSecretCombination() {
         return secretCombination;
+    }
+
+    public Combination validate(Combination guess) {
+        List<Color> result = new LinkedList<Color>();
+        return new Combination(result.toArray(new Color[0]));
     }
 
 }

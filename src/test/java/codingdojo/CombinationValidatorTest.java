@@ -20,8 +20,16 @@ public class CombinationValidatorTest {
     }
 
     @Test
-    public void testGetSecretCombination() {
+    public void testGetSecretCombinationReturnsConstructorParameter() {
         assertThat(validator.getSecretCombination(), is(secretCombination));
+    }
+
+    @Test
+    public void testValidateReturnEmptyAnswerForNoMatchingColors() {
+        Combination guess = new Combination(Color.RED, Color.YELLOW);
+        Combination answer = new Combination();
+
+        assertThat(validator.validate(guess), is(answer));
     }
 
 }
