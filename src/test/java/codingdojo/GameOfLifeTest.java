@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
-public class GameOfLiveTest {
+public class GameOfLifeTest {
 
     /* @formatter:off */
     private static final char[][] POPULATION = new char[][] {
@@ -106,7 +106,7 @@ public class GameOfLiveTest {
 
     @Test
     public void toStringReturnsExpectedStringRepresentation() {
-        String expectedStringRepresentation = ".#.\n.#.\n.#.";
+        String expectedStringRepresentation = ".#.\n.#.\n.#.\n";
 
         assertThat(world.toString(), is(expectedStringRepresentation));
     }
