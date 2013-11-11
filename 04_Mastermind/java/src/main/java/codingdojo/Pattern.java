@@ -1,6 +1,5 @@
 package codingdojo;
 
-import java.awt.Color;
 import java.util.Arrays;
 import java.util.List;
 
@@ -46,4 +45,14 @@ public class Pattern {
         return true;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("(");
+        for (Color color : colors) {
+            sb.append(color.toString()).append("-");
+        }
+        sb.replace(sb.length() - 1, sb.length(), ")");
+        return sb.toString();
+    }
 }

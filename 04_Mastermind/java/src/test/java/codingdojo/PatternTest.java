@@ -4,7 +4,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertThat;
 
-import java.awt.Color;
 import java.util.List;
 
 import org.junit.Before;
@@ -58,6 +57,12 @@ public class PatternTest {
     @Test(expected = NullPointerException.class)
     public void constructorThrowsExceptionForNullColorList() {
         new Pattern((List<Color>) null);
+    }
+
+    @Test
+    public void toStringReturnsExpectedFormat() {
+        String expectedString = "(RED-YELLOW-BLUE)";
+        assertThat(pattern.toString(), is(expectedString));
     }
 
 }
