@@ -5,11 +5,12 @@ import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertThat;
 
 import java.awt.Color;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class PatterTest {
+public class PatternTest {
 
     private Color[] colors;
     private Pattern pattern;
@@ -52,6 +53,11 @@ public class PatterTest {
     @Test
     public void testEqualsReturnsFalseForIncompatibleObject() {
         assertThat(pattern.equals("incompatible"), is(false));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void constructorThrowsExceptionForNullColorList() {
+        new Pattern((List<Color>) null);
     }
 
 }

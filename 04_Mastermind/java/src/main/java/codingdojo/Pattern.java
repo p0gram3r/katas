@@ -9,6 +9,10 @@ public class Pattern {
     private List<Color> colors;
 
     public Pattern(List<Color> colors) {
+        if (colors == null) {
+            throw new NullPointerException("color list cannot be null!");
+        }
+
         this.colors = colors;
     }
 
@@ -24,7 +28,7 @@ public class Pattern {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((colors == null) ? 0 : colors.hashCode());
+        result = prime * result + colors.hashCode();
         return result;
     }
 
@@ -37,10 +41,7 @@ public class Pattern {
         if (getClass() != obj.getClass())
             return false;
         Pattern other = (Pattern) obj;
-        if (colors == null) {
-            if (other.colors != null)
-                return false;
-        } else if (!colors.equals(other.colors))
+        if (!colors.equals(other.colors))
             return false;
         return true;
     }
