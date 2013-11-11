@@ -19,7 +19,8 @@ these colors may be represented by numbers, e.g. 0 = RED, 1 = YELLOW and so on.
 
 ### Level 1
 
-The patterns provided by the _codemaker_ and _codebreaker_ consists of 4 pegs, each in a different color.
+Implement a validator that adheres to the rules described above. You can assume that both patterns consist of 4 pegs,
+at which each peg has a different color and there are no duplicates.
 
 
 ### Level 2
@@ -34,5 +35,5 @@ Same as level 2, plus: The secret pattern provided by the _codemakers_ may conta
 
 ### Level 4
 
-Same as level 3, plus: The number of colored pegs in a pattern rises from 4 to 5 and the number of available
+Same as level 3, plus: The number of colored pegs in a pattern increases from 4 to 5 and the number of available
 colors is increased to 8 (by adding PINK and CYAN)
