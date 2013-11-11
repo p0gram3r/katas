@@ -9,50 +9,49 @@ import java.awt.Color;
 import org.junit.Before;
 import org.junit.Test;
 
-public class CombinationTest {
+public class PatterTest {
 
     private Color[] colors;
-    private Combination combination;
+    private Pattern pattern;
 
     @Before
     public void before() {
         colors = new Color[] { Color.RED, Color.YELLOW, Color.BLUE };
-        combination = new Combination(colors);
+        pattern = new Pattern(colors);
     }
 
     @Test
     public void testGetColorsReturnsConstructorParameter() {
-
-        assertThat(combination.getColors(), contains(colors));
+        assertThat(pattern.getColors(), contains(colors));
     }
 
     @Test
     public void testEqualsReturnsTrueForSelf() {
-        assertThat(combination.equals(combination), is(true));
+        assertThat(pattern.equals(pattern), is(true));
     }
 
     @Test
-    public void testEqualsReturnsTrueForCombinationWithEqualColorArray() {
-        Combination other = new Combination(colors);
+    public void testEqualsReturnsTrueForPatternWithEqualColorArray() {
+        Pattern other = new Pattern(colors);
 
-        assertThat(combination.equals(other), is(true));
+        assertThat(pattern.equals(other), is(true));
     }
 
     @Test
     public void testEqualsReturnsFalseForNull() {
-        assertThat(combination.equals(null), is(false));
+        assertThat(pattern.equals(null), is(false));
     }
 
     @Test
     public void testEqualsReturnsFalseForUnequalColorArray() {
-        Combination other = new Combination(new Color[0]);
+        Pattern other = new Pattern(new Color[0]);
 
-        assertThat(combination.equals(other), is(false));
+        assertThat(pattern.equals(other), is(false));
     }
 
     @Test
     public void testEqualsReturnsFalseForIncompatibleObject() {
-        assertThat(combination.equals("incompatible"), is(false));
+        assertThat(pattern.equals("incompatible"), is(false));
     }
 
 }

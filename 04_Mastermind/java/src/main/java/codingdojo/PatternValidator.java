@@ -4,28 +4,28 @@ import java.awt.Color;
 import java.util.LinkedList;
 import java.util.List;
 
-public class CombinationValidator {
+public class PatternValidator {
 
-    private Combination secretCombination;
+    private Pattern secretPattern;
 
-    public CombinationValidator(Combination secretCombination) {
-        this.secretCombination = secretCombination;
+    public PatternValidator(Pattern secretPattern) {
+        this.secretPattern = secretPattern;
     }
 
     public String getGreeting() {
         return "Hello World!";
     }
 
-    public Combination getSecretCombination() {
-        return secretCombination;
+    public Pattern getSecretPattern() {
+        return secretPattern;
     }
 
-    public Combination validate(Combination guess) {
+    public Pattern validate(Pattern guess) {
         int postitonMatches = 0;
         int colorMatches = 0;
 
         // FIXME inline?
-        List<Color> secretColors = secretCombination.getColors();
+        List<Color> secretColors = secretPattern.getColors();
         List<Color> guessColors = guess.getColors();
 
         for (int i = 0; i < guessColors.size(); i++) {
@@ -39,7 +39,7 @@ public class CombinationValidator {
         return createResult(postitonMatches, colorMatches);
     }
 
-    private Combination createResult(int postitonMatches, int colorMatches) {
+    private Pattern createResult(int postitonMatches, int colorMatches) {
         List<Color> colors = new LinkedList<Color>();
         for (int i = 0; i < postitonMatches; i++) {
             colors.add(Color.BLACK);
@@ -48,7 +48,7 @@ public class CombinationValidator {
             colors.add(Color.WHITE);
         }
 
-        return new Combination(colors);
+        return new Pattern(colors);
     }
 
 }

@@ -4,15 +4,15 @@ import java.awt.Color;
 import java.util.Arrays;
 import java.util.List;
 
-public class Combination {
+public class Pattern {
 
     private List<Color> colors;
 
-    public Combination(List<Color> colors) {
+    public Pattern(List<Color> colors) {
         this.colors = colors;
     }
 
-    public Combination(Color... colors) {
+    public Pattern(Color... colors) {
         this.colors = Arrays.asList(colors);
     }
 
@@ -36,7 +36,7 @@ public class Combination {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Combination other = (Combination) obj;
+        Pattern other = (Pattern) obj;
         if (colors == null) {
             if (other.colors != null)
                 return false;
