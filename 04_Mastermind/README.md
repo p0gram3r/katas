@@ -8,7 +8,7 @@ For a detailed introduction, see http://en.wikipedia.org/wiki/Mastermind_(board_
 ## Goal
 
 The goal of this kata is to create a PatternValidator, which compares a secret pattern provided by the 
-_codemaker_ to the provided by the _codebreaker_. The validator must return a list of key pegs based on the
+_codemaker_ to the pattern provided by the _codebreaker_. The validator must return a list of key pegs based on the
 following rules:
 - A black key peg is added for each code peg which is correct in both color and position
 - A white key peg is added for each code peg which is correct in color but which is placed in the wrong position
