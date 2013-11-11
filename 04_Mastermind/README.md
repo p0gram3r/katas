@@ -35,5 +35,5 @@ Same as level 2, plus: The secret pattern provided by the _codemakers_ may conta
 
 ### Level 4
 
-Same as level 3, plus: The number of colored pegs in a pattern rises from 4 to 5 and the number of available
+Same as level 3, plus: The number of colored pegs in a pattern increases from 4 to 5 and the number of available
 colors is increased to 8 (by adding PINK and CYAN)
