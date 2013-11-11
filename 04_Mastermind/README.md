@@ -2,7 +2,7 @@
 
 Mastermind or Master Mind is a code-breaking game for two players.
 
-For a detailed introduction, see http://en.wikipedia.org/wiki/Mastermind_%28board_game%29.
+For a detailed introduction, see http://en.wikipedia.org/wiki/Mastermind_(board_game).
 
 
 ## Goal
