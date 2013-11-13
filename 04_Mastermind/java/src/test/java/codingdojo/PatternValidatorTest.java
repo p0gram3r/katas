@@ -50,6 +50,19 @@ public class PatternValidatorTest {
                 {pattern(RED, YELLOW), pattern(YELLOW, YELLOW), pattern(BLACK)},
                 {pattern(RED, YELLOW), pattern(RED, RED), pattern(BLACK)},
                 
+                // 3 colors with duplicates in guess
+                {pattern(RED, YELLOW, GREEN), pattern(BLUE, BLUE, BROWN), pattern()},
+                {pattern(RED, YELLOW, GREEN), pattern(RED, RED, BROWN), pattern(BLACK)},
+                {pattern(RED, YELLOW, GREEN), pattern(BLUE, RED, RED), pattern(WHITE)},
+                {pattern(RED, YELLOW, GREEN), pattern(RED, ORANGE, RED), pattern(BLACK)},
+                {pattern(RED, YELLOW, GREEN), pattern(RED, RED, RED), pattern(BLACK)},
+                
+                // 2 colors with duplicates in secret
+                {pattern(RED, RED), pattern(BLUE, BLUE), pattern()},
+                {pattern(RED, RED), pattern(YELLOW, RED), pattern(BLACK)},
+                {pattern(RED, RED), pattern(RED, YELLOW), pattern(BLACK)},
+                {pattern(RED, RED), pattern(RED, RED), pattern(BLACK, BLACK)},
+                
                 // 3 colors with duplicates in secret
                 {pattern(RED, RED, YELLOW), pattern(BLUE, ORANGE, BROWN), pattern()},
                 {pattern(RED, RED, YELLOW), pattern(RED, ORANGE, BROWN), pattern(BLACK)},
@@ -59,6 +72,22 @@ public class PatternValidatorTest {
                 {pattern(RED, RED, YELLOW), pattern(BLUE, RED, RED), pattern(BLACK, WHITE)},
                 {pattern(RED, RED, YELLOW), pattern(RED, ORANGE, RED), pattern(BLACK, WHITE)},
                 {pattern(RED, RED, YELLOW), pattern(RED, RED, YELLOW), pattern(BLACK, BLACK, BLACK)},
+                
+                // 4 colors with duplicates in secret and guess
+                {pattern(RED, RED, YELLOW, YELLOW), pattern(BLUE, BLUE, BROWN, GREEN), pattern()},
+                {pattern(RED, RED, YELLOW, YELLOW), pattern(RED, RED, BROWN, GREEN), pattern(BLACK, BLACK)},
+                {pattern(RED, RED, YELLOW, YELLOW), pattern(RED, BLUE, RED, GREEN), pattern(BLACK, WHITE)},
+                {pattern(RED, RED, YELLOW, YELLOW), pattern(RED, BLUE, BROWN, RED), pattern(BLACK, WHITE)},
+                {pattern(RED, RED, YELLOW, YELLOW), pattern(BLUE, RED, RED, GREEN), pattern(BLACK, WHITE)},
+                {pattern(RED, RED, YELLOW, YELLOW), pattern(BLUE, RED, BROWN, RED), pattern(BLACK, WHITE)},
+                {pattern(RED, RED, YELLOW, YELLOW), pattern(BLUE, BLUE, RED, RED), pattern(WHITE, WHITE)},
+                {pattern(RED, RED, YELLOW, YELLOW), pattern(RED, RED, RED, GREEN), pattern(BLACK, BLACK)},
+                {pattern(RED, RED, YELLOW, YELLOW), pattern(BLUE, RED, RED, RED), pattern(BLACK, WHITE)},
+                {pattern(RED, RED, YELLOW, YELLOW), pattern(RED, RED, RED, RED), pattern(BLACK, BLACK)},
+                {pattern(RED, RED, YELLOW, YELLOW), pattern(RED, RED, YELLOW, YELLOW), pattern(BLACK, BLACK, BLACK, BLACK)},
+                {pattern(RED, RED, YELLOW, YELLOW), pattern(YELLOW, RED, RED, YELLOW), pattern(BLACK, BLACK, WHITE, WHITE)},
+                {pattern(RED, RED, YELLOW, YELLOW), pattern(YELLOW, YELLOW, RED, RED), pattern(WHITE, WHITE, WHITE, WHITE)},
+                {pattern(RED, RED, YELLOW, YELLOW), pattern(RED, YELLOW, YELLOW, RED), pattern(BLACK, BLACK, WHITE, WHITE)},
         });
         // @formatter:on
     }
