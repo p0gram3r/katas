@@ -11,10 +11,6 @@ public class PatternValidator {
         this.secretPattern = secretPattern;
     }
 
-    public String getGreeting() {
-        return "Hello World!";
-    }
-
     public Pattern getSecretPattern() {
         return secretPattern;
     }
@@ -23,14 +19,21 @@ public class PatternValidator {
         int postitonMatches = 0;
         int colorMatches = 0;
 
-        // FIXME inline?
-        List<Color> secretColors = secretPattern.getColors();
-        List<Color> guessColors = guess.getColors();
+        List<Color> secretColors = new LinkedList<Color>(secretPattern.getColors());
+        List<Color> guessColors = new LinkedList<Color>(guess.getColors());
 
-        for (int i = 0; i < guessColors.size(); i++) {
+        // remove color and position matches
+        for (int i = guessColors.size() - 1; i >= 0; i--) {
             if (secretColors.get(i).equals(guessColors.get(i))) {
                 postitonMatches++;
-            } else if (secretColors.contains(guessColors.get(i))) {
+                secretColors.remove(i);
+                guessColors.remove(i);
+            }
+        }
+
+        // remove color matches
+        for (int i = guessColors.size() - 1; i >= 0; i--) {
+            if (secretColors.remove(guessColors.get(i))) {
                 colorMatches++;
             }
         }
