@@ -1,6 +1,7 @@
 package codingdojo;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Pattern {
@@ -12,11 +13,11 @@ public class Pattern {
             throw new NullPointerException("color list cannot be null!");
         }
 
-        this.colors = colors;
+        this.colors = Collections.unmodifiableList(colors);
     }
 
     public Pattern(Color... colors) {
-        this.colors = Arrays.asList(colors);
+        this(Arrays.asList(colors));
     }
 
     public List<Color> getColors() {
