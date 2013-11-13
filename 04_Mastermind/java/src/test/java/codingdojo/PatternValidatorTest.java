@@ -47,8 +47,8 @@ public class PatternValidatorTest {
                 
                 // 2 colors with duplicates in guess
                 {pattern(RED, YELLOW), pattern(BLUE, BLUE), pattern()},
-//                {pattern(RED, YELLOW), pattern(YELLOW, YELLOW), pattern(BLACK)},
-//                {pattern(RED, YELLOW), pattern(RED, RED), pattern(BLACK)},
+                {pattern(RED, YELLOW), pattern(YELLOW, YELLOW), pattern(BLACK)},
+                {pattern(RED, YELLOW), pattern(RED, RED), pattern(BLACK)},
                 
                 // 3 colors with duplicates in secret
                 {pattern(RED, RED, YELLOW), pattern(BLUE, ORANGE, BROWN), pattern()},
