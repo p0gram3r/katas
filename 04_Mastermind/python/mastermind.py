@@ -92,10 +92,12 @@ def btn_ok():
         return
     
     result = check_pattern(secret, guess)
-    guess_history.append(list(guess, result))
-    print guess, result
+    guess_history.append([guess, result])
+   
+    if result.count(BLACK) == 4:
+        print "correct :-)))"
     
-    if len(guess_history) >= MAX_GUESSES or result.count(BLACK) == 4:
+    if len(guess_history) >= MAX_GUESSES:
         game_over = True
         print
         print "G A M E   O V E R   ! ! !"
@@ -115,16 +117,36 @@ def btn_color3():
     adjust_guess_color(3)
     
 
+PADDING = 10
+SIZE = 40
     
 def draw(canvas):
+    x = PADDING + SIZE/2
+    y = PADDING
     
-    pass
+    for entry in guess_history:
+        old_guess = entry[0]
+        old_result = entry[1]
+        
+        # draw guess
+        canvas.draw_line([x, y], [x, y + SIZE], SIZE, old_guess[0])
+        x += SIZE + PADDING
+        canvas.draw_line([x, y], [x, y + SIZE], SIZE, old_guess[1])
+        x += SIZE + PADDING
+        canvas.draw_line([x, y], [x, y + SIZE], SIZE, old_guess[2])
+        x += SIZE + PADDING
+        canvas.draw_line([x, y], [x, y + SIZE], SIZE, old_guess[3])
+      
+        # draw result
+        
+        # reset values for next line
+        x = PADDING + SIZE/2
+        y += SIZE + PADDING
     
     
-
-
+    
 # build a simple UI
-frame = simplegui.create_frame("Mastermind", 400, 600)
+frame = simplegui.create_frame("Mastermind", 400, 700)
 frame.add_button("new game", btn_new_game, 200)
 frame.add_label("")
 frame.add_label("")
