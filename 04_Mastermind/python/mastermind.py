@@ -12,14 +12,23 @@ BLUE = "Blue"
 ORANGE = "Orange"
 BROWN = "Brown"
 
+GUESS_COLORS = (RED, YELLOW, GREEN, BLUE, ORANGE, BROWN)
 MAX_GUESSES = 12
 
 secret = []
 guess  = []
 guess_history = []
+game_over = False
 
 
-
+# helper function to adjust the color of the current guess
+def adjust_guess_color(guess_index):
+    if game_over:
+        return
+    color = guess[guess_index]
+    index = GUESS_COLORS.index(color)
+    guess[guess_index] = GUESS_COLORS[(index + 1) % len(GUESS_COLORS)]
+   
     
     
 def check_pattern(secret, guess):
@@ -29,6 +38,7 @@ def check_pattern(secret, guess):
     secret_clone = list(secret)
     guess_clone = list(guess)
     
+    # remove all position matches
     index = 0
     for color in guess:
         if guess[index] == secret[index]:
@@ -37,6 +47,7 @@ def check_pattern(secret, guess):
             secret_clone.remove(color)
         index += 1
     
+    #remove all color matches
     for color in guess_clone:
         if color in secret_clone:
             white_pegs += 1
@@ -54,30 +65,55 @@ def create_result(black_pegs, white_pegs):
 
 
 def btn_new_game():
-    global secret, guess_history
+    global guess, secret, guess_history, game_over
     
     # TODO: randomize!
     secret = [RED, YELLOW, GREEN, RED]
+    
+    guess = [RED, RED, RED, RED]
     guess_history = []
+    game_over = False
 
 
 def btn_ok(): 
-    
-    guess = [YELLOW, ORANGE, GREEN, RED]
+    if game_over:
+        return
     
     print secret
     print guess
     print check_pattern(secret, guess)
+    print 
+
+        
+
+def btn_color1():
+    adjust_guess_color(0)
+    
+def btn_color2(): 
+    adjust_guess_color(1)
+    
+def btn_color3(): 
+    adjust_guess_color(2)
+
+def btn_color4(): 
+    adjust_guess_color(3)
 
 
 
+    
 def draw(canvas):
+    
     pass
     
     
 
 frame = simplegui.create_frame("Mastermind", 400, 600)
 frame.add_button("new game", btn_new_game, 100)
+frame.add_label("")
+frame.add_button("color 1", btn_color1, 100)
+frame.add_button("color 2", btn_color2, 100)
+frame.add_button("color 3", btn_color3, 100)
+frame.add_button("color 4", btn_color4, 100)
 frame.add_label("")
 frame.add_button("Ok", btn_ok, 100)
 frame.set_draw_handler(draw)
