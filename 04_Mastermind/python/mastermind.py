@@ -85,18 +85,23 @@ def btn_ok():
     print 
 
         
-
-def btn_color1():
+def btn_color0(): 
     adjust_guess_color(0)
+    lbl_color0.set_text(guess[0])
+        
+def btn_color1():
+    adjust_guess_color(1)
+    lbl_color1.set_text(guess[1])
     
 def btn_color2(): 
-    adjust_guess_color(1)
+    adjust_guess_color(2)
+    lbl_color2.set_text(guess[2])
     
 def btn_color3(): 
-    adjust_guess_color(2)
-
-def btn_color4(): 
     adjust_guess_color(3)
+    lbl_color3.set_text(guess[3])
+
+
 
 
 
@@ -107,17 +112,23 @@ def draw(canvas):
     
     
 
+# start the show
+btn_new_game()
+
 frame = simplegui.create_frame("Mastermind", 400, 600)
-frame.add_button("new game", btn_new_game, 100)
+frame.add_button("new game", btn_new_game, 200)
 frame.add_label("")
+frame.add_label("")
+frame.add_label("")
+frame.add_button("color 0", btn_color0, 100)
+lbl_color0 = frame.add_label(guess[0])
 frame.add_button("color 1", btn_color1, 100)
+lbl_color1 = frame.add_label(guess[1])
 frame.add_button("color 2", btn_color2, 100)
+lbl_color2 = frame.add_label(guess[2])
 frame.add_button("color 3", btn_color3, 100)
-frame.add_button("color 4", btn_color4, 100)
+lbl_color3 = frame.add_label(guess[3])
 frame.add_label("")
 frame.add_button("Ok", btn_ok, 100)
 frame.set_draw_handler(draw)
-
-# start the show
-btn_new_game()
 frame.start()
