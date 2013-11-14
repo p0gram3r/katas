@@ -28,7 +28,15 @@ def adjust_guess_color(guess_index):
     color = guess[guess_index]
     index = GUESS_COLORS.index(color)
     guess[guess_index] = GUESS_COLORS[(index + 1) % len(GUESS_COLORS)]
-   
+    update_color_labels()
+    
+    
+def update_color_labels():
+    lbl_color0.set_text(guess[0])
+    lbl_color1.set_text(guess[1])
+    lbl_color2.set_text(guess[2])
+    lbl_color3.set_text(guess[3])
+    
     
     
 def check_pattern(secret, guess):
@@ -70,40 +78,42 @@ def btn_new_game():
     # TODO: randomize!
     secret = [RED, YELLOW, GREEN, RED]
     
-    guess = [RED, RED, RED, RED]
+    guess = [RED, YELLOW, GREEN, ORANGE]
     guess_history = []
     game_over = False
+    
+    update_color_labels()
 
 
 def btn_ok(): 
+    global game_over
+    
     if game_over:
         return
     
-    print secret
-    print guess
-    print check_pattern(secret, guess)
-    print 
-
+    result = check_pattern(secret, guess)
+    guess_history.append(list(guess, result))
+    print guess, result
+    
+    if len(guess_history) >= MAX_GUESSES or result.count(BLACK) == 4:
+        game_over = True
+        print
+        print "G A M E   O V E R   ! ! !"
+        print 
+        
         
 def btn_color0(): 
     adjust_guess_color(0)
-    lbl_color0.set_text(guess[0])
-        
+            
 def btn_color1():
     adjust_guess_color(1)
-    lbl_color1.set_text(guess[1])
-    
+        
 def btn_color2(): 
     adjust_guess_color(2)
-    lbl_color2.set_text(guess[2])
-    
+        
 def btn_color3(): 
     adjust_guess_color(3)
-    lbl_color3.set_text(guess[3])
-
-
-
-
+    
 
     
 def draw(canvas):
@@ -112,23 +122,25 @@ def draw(canvas):
     
     
 
-# start the show
-btn_new_game()
 
+# build a simple UI
 frame = simplegui.create_frame("Mastermind", 400, 600)
 frame.add_button("new game", btn_new_game, 200)
 frame.add_label("")
 frame.add_label("")
 frame.add_label("")
 frame.add_button("color 0", btn_color0, 100)
-lbl_color0 = frame.add_label(guess[0])
+lbl_color0 = frame.add_label("")
 frame.add_button("color 1", btn_color1, 100)
-lbl_color1 = frame.add_label(guess[1])
+lbl_color1 = frame.add_label("")
 frame.add_button("color 2", btn_color2, 100)
-lbl_color2 = frame.add_label(guess[2])
+lbl_color2 = frame.add_label("")
 frame.add_button("color 3", btn_color3, 100)
-lbl_color3 = frame.add_label(guess[3])
+lbl_color3 = frame.add_label("")
 frame.add_label("")
 frame.add_button("Ok", btn_ok, 100)
 frame.set_draw_handler(draw)
+
+# start the show
+btn_new_game()
 frame.start()
