@@ -1,6 +1,11 @@
 # straight-forward implementation of Mastermind
 # no object-orientation here :-)
 
+# TODO game success message
+# TODO draw output is not perfect yet
+# TODO add empty spots for result pegs
+# TODO draw circles for pegs
+
 import simplegui
 import random
 
@@ -27,16 +32,18 @@ game_over = False
 
 
 # helper function to adjust the color of the current guess
-def adjust_guess_color(guess_index):
+def adjust_guess_color(index):
     if game_over:
         return
-    color = guess[guess_index]
-    index = GUESS_COLORS.index(color)
-    guess[guess_index] = GUESS_COLORS[(index + 1) % len(GUESS_COLORS)]
+    
+    color        = guess[index]
+    color_index  = GUESS_COLORS.index(color)
+    guess[index] = GUESS_COLORS[(color_index + 1) % len(GUESS_COLORS)]
     update_color_buttons()
     
     
-    
+
+# helper function to update the text of all color buttons    
 def update_color_buttons():
     btn_color0.set_text(guess[0])
     btn_color1.set_text(guess[1])
@@ -44,8 +51,9 @@ def update_color_buttons():
     btn_color3.set_text(guess[3])
     
     
-    
-def check_pattern(secret, guess):
+
+# helper function to validate a     
+def check_guess():
     black_pegs = 0
     white_pegs = 0
     
@@ -101,9 +109,9 @@ def btn_ok():
     if game_over:
         return
     
-    result = check_pattern(secret, guess)
+    result = check_guess()
     guess_history.append([list(guess), result])
-       
+    
     if result.count(BLACK) == 4 or len(guess_history) >= MAX_GUESSES:
         game_over = True
 
@@ -126,7 +134,7 @@ def btn_color3():
 
 # draw handler of the canvas
 def draw(canvas):
-    x = PEG_PADDING + PEG_SIZE_GUESS/2
+    x = PEG_PADDING + PEG_SIZE_GUESS / 2
     y = PEG_PADDING
     
     # draw the entire history
