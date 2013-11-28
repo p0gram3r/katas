@@ -2,7 +2,7 @@
 
 namespace CodingDojo;
 
-class HelloWorld {
+class ProductUtils {
 
     public function validateProducts($products) {
         $requiredFields = array(
@@ -17,10 +17,10 @@ class HelloWorld {
             $fields = array_keys($raw_product);
             foreach ($requiredFields as $requiredField) {
                 if (!in_array($requiredField, $fields)) {
-                    valid = false;
+                    $valid = false;
                 }
             }
         }
-        $return $valid
+        return $valid;
     }
 }
