@@ -6,6 +6,7 @@ Code refactoring is a "disciplined technique for restructuring an existing body 
 
 The goal of this kata is to train the process of refactoring unknown code. 
 
+The code examples in this kata contain a lot of things that you would usually not want to do in productive 
+code. This is intentional for the sake of training!
 
-* only **one** indentation level **per method**
-*
+
