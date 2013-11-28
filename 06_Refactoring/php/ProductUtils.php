@@ -14,7 +14,7 @@ class ProductUtils {
         
         $valid = true;
         foreach ($products as $rawProduct) {
-            $fields = array_keys($raw_product);
+            $fields = array_keys($rawProduct);
             foreach ($requiredFields as $requiredField) {
                 if (!in_array($requiredField, $fields)) {
                     $valid = false;
