@@ -1,12 +1,26 @@
-# Kata 6 - Code refactoring
+# Kata 6 - NumberToTextConverter
 
-Code refactoring is a "disciplined technique for restructuring an existing body of code, altering its internal structure without changing its external behavior",[1] undertaken in order to improve some of the nonfunctional attributes of the software. Advantages include improved code readability and reduced complexity to improve the maintainability of the source code, as well as a more expressive internal architecture or object model to improve extensibility. (source: http://en.wikipedia.org/wiki/Code_refactoring)
+It occurs now and then in real life that people want to write about money, especially about a certain amount of money. If it comes to cheques or contracts for example some nations have laws that state that you should write out the amount in words additionally to the amount in numbers to avoid fraud and mistakes. So if you want to transfer 745 $ to someone via cheque you have to fill out to fields:
+
+* 745.00 $ (amount in numbers)
+* seven hundred and forty five dollars (amount in words) 
 
 ## Goal
 
-The goal of this kata is to train the process of refactoring unknown code. 
+The goal of this kata is to write a little converter to convert numbers into words. 
 
-The code examples in this kata contain a lot of things that you would usually not want to do in productive 
-code. This is intentional for the sake of training!
+### Level 1
 
+The converter can handle integer numbers between 1 and 9.
 
+### Level 2
+
+The converter can handle multiples of 10, i.e. 10, 20, ... , 90.
+
+### Level 3 
+
+The converter can handle numbers up to 999.
+
+### Level 4
+
+The converter can handle thousands, millions and billions.
