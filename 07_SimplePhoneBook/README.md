@@ -69,11 +69,13 @@ Keeping our records in memory only is not enough: make sure the phone book can b
 
 ### Excercise 2.2
 
-Extend the persistence layer: use a database to store the entries of the phone book. For this excercise it is sufficient to use plain JDBC. 
+Extend the persistence layer: use a database to store the records of the phone book. Set up a running database (e.g. MySQL or [HSQLDB](http://hsqldb.org)) and define all tables required for your phone book implementation. Extend your application to be able to connect to the database and 
+
+For this excercise it is sufficient to use plain JDBC. 
 
 ### Excercise 2.3
 
-Time for a slightly more sophisticated persistence layer! Replace the JDBC solution and make use of a simple SQL wrapper framework like [JDBI](http://jdbi.org).
+Time for a slightly more sophisticated persistence layer! Replace the JDBC solution and make use of the simple SQL wrapper framework [JDBI](http://jdbi.org).
 
 ### Excercise 2.4 (optional)
 
@@ -84,7 +86,7 @@ Go the extra mile and create an alternative persistence mechanism using the Java
 
 ### Excercise 3.1
 
-Create a REST API to manipulate the phone book.
+Create a REST API to manipulate the phone book. Deploy your project in Tomcat and use tools like *curl* or browser plugin like *RESTClient* for Firefox to play around with the application.
 
 ### Excercise 3.2
 
