@@ -7,9 +7,11 @@ The goal of this kata is to create a very simple phone book application.
 
 ## Level 1 - Core functionality
 
+In this level we focus on the core funtionality of the phone book: adding and listing entries. 
+
 To make things a bit easier, we agree on using String as data type for all fields in this project.
 
-### 1.1
+### Excercise 1.1
 
 Create a class *SimplePhoneBook* and implements the following methods:
 ``` java
@@ -17,7 +19,7 @@ void add(String name, String number);
 
 Collection<String> getAllNames();
 
-String getNumber(String name)
+String getNumber(String name);
 ```
 
 Also implement the ```toString()``` method so that it returns output in the following way:
@@ -29,7 +31,7 @@ name2: number2
 
 Make sure the listing of all names and the ```toString()``` are sorted alphabetically.
 
-### 1.2
+### Excercise 1.2
 
 Extend the *SimplePhoneBook* so that one can add multiple numbers for a single name. 
 
@@ -45,7 +47,7 @@ name2:
 
 Make sure the numbers per person are sorted alphabetically in the ```toString()``` output.
 
-### 1.3
+### Excercise 1.3
 
 Extend the *SimplePhoneBook* so that each number is denoted by the type of the number. Possible types are HOME, CELL, WORK, FAX, PAGER. Keep in mind that some people might have two ore more numbers of the same type.
 
@@ -61,29 +63,29 @@ name2:
 
 ## level 2 - Persistence
 
-### 2.1 
+### Excercise 2.1 
 
-Keeping all the data in memory is not enough: let's make sure the phone book can be persisted more permanently. Create a mechanism to read and write the entries from a file.
+Keeping our records in memory only is not enough: make sure the phone book can be persisted more permanently! Create a mechanism to read and write the entries from/to a file using Java Object serialization.
 
-### 2.2
+### Excercise 2.2
 
-Extend the persistence layer: use a database to store the entries of the phonebook. For this excercise it is sufficient to use plain JDBC. 
+Extend the persistence layer: use a database to store the entries of the phone book. For this excercise it is sufficient to use plain JDBC. 
 
-### 2.3
+### Excercise 2.3
 
-Go the extra mile and replace the JDBC solution. Make use of an SQL wrapper framework like [JDBI](http://jdbi.org).
+Time for a slightly more sophisticated persistence layer! Replace the JDBC solution and make use of a simple SQL wrapper framework like [JDBI](http://jdbi.org).
 
-### 2.4 (optional)
+### Excercise 2.4 (optional)
 
-Build an alternative persistence mechanism using the Java Persistence API (JPA).
+Go the extra mile and create an alternative persistence mechanism using the Java Persistence API (JPA).
 
 
-## level 3 - Accessibility
+## level 3 - Going enterprise
 
-### 3.1
+### Excercise 3.1
 
-Create a REST API to manipulate the entries of the phone book. You should be able to add new entries, get a complete listing and search for numbers by name and type.
+Create a REST API to manipulate the phone book.
 
-### 3.2
+### Excercise 3.2
 
-Create a simple android application that uses the REST API to access the entries in the phone book.
+Create a simple Android application that uses the REST API to access the records in the phone book.
