@@ -33,7 +33,7 @@ Make sure the listing of all names and the ```toString()``` are sorted alphabeti
 
 ### Excercise 1.2
 
-Extend the *SimplePhoneBook* so that one can add multiple numbers for a single name. 
+Extend the *SimplePhoneBook* so that you can add multiple numbers for a single name. Retreiving the record for a given name should return a Collection of all numbers.
 
 The output format of ```toString()``` changes to:
 ```
@@ -86,7 +86,7 @@ Go the extra mile and create an alternative persistence mechanism using the Java
 
 ### Excercise 3.1
 
-Create a REST API to manipulate the phone book. Deploy your project to Tomcat and use tools like *curl* or browser plugin like *RESTClient* for Firefox to play around with the application.
+Create a REST API to manipulate the phone book and deploy your project to Tomcat. Use tools like *curl* or browser plugin like *RESTClient* for Firefox to play around with the application.
 
 ### Excercise 3.2
 
