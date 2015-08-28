@@ -86,7 +86,7 @@ Go the extra mile and create an alternative persistence mechanism using the Java
 
 ### Excercise 3.1
 
-Create a REST API to manipulate the phone book. Deploy your project in Tomcat and use tools like *curl* or browser plugin like *RESTClient* for Firefox to play around with the application.
+Create a REST API to manipulate the phone book. Deploy your project to Tomcat and use tools like *curl* or browser plugin like *RESTClient* for Firefox to play around with the application.
 
 ### Excercise 3.2
 
