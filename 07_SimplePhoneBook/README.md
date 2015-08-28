@@ -5,39 +5,59 @@ The goal of this kata is to create a very simple phone book application.
 **Note:** The following instructions assume that the kata is practised in Java. For other languages please use respective frameworks and techniques.
 
 
-## Level 1 - Basic functionality
+## Level 1 - Core functionality
 
-To make things a bit easier, we agree on using String as data type for pieces of information in this project.
+To make things a bit easier, we agree on using String as data type for all fields in this project.
 
 ### 1.1
 
-- Namen und Nummer als Strings
-- Namen alphatetisch sortiert
+Create a class *SimplePhoneBook* and implements the following methods:
+``` java
+void add(String name, String number);
 
+Collection<String> getAllNames();
 
-- methoden zum Abfragen von Einträge
+String getNumber(String name)
+```
 
-- Format zeilenweise "name: nummer\n"
+Also implement the ```toString()``` method so that it returns output in the following way:
+```
+name1: number1
+name2: number2
+(...)
+```
 
-- methods to implement:
-	- add(name, number)
-	- toString()
-
+Make sure the listing of all names and the ```toString()``` are sorted alphabetically.
 
 ### 1.2
 
-- mehrere Nummern pro Name
-- Nummern alphabetisch sortiert
-- Format "name:\n  nummer\n"
+Extend the *SimplePhoneBook* so that one can add multiple numbers for a single name. 
 
+The output format of ```toString()``` changes to:
+```
+name1:
+  number1.1
+  number1.2
+name2:
+  number2.1
+(...)
+```
 
+Make sure the numbers per person are sorted alphabetically in the ```toString()``` output.
 
 ### 1.3
 
-- Nummern mit Typ versehen (z.B. HOME, CELL, WORK, FAX, PAGER)
-- pro Person mehrere Nummern pro Typ möglich
-- Format "name:\n  typ: nummer\n"
+Extend the *SimplePhoneBook* so that each number is denoted by the type of the number. Possible types are HOME, CELL, WORK, FAX, PAGER. Keep in mind that some people might have two ore more numbers of the same type.
 
+The output format of ```toString()``` changes to:
+```
+name1:
+  type1.1: number1.1
+  type1.2: number1.2
+name2:
+  type2.1: number2.1
+(...)
+```
 
 ## level 2 - Persistence
 
