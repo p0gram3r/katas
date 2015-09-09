@@ -65,17 +65,29 @@ name2:
 
 Add methods to remove specific numbers from a person or the entire person from the phone book entirely. 
 
+
 ## level 2 - Unit testing
 
 ### Exercise 2.1
 
-Rewrite the entire application using a test-driven approach. Make sure to always create at least one unit test before adding new or changing existing functionality. 
+Write unit tests for your application. As always you should try to achieve a code coverage of 100%. 
 
-To make it more challenging, start over from exercise 1.1. Before doing any refactoring for subsequent exercises, write all necessary unit tests up-front.
+To measure code coverage in your project, simply run
+```(bash)
+mvn cobertura:cobertura
+```
+
+This will run the [Cobertura](http://cobertura.github.io/cobertura/) plug-in for Maven and generate some HTML pages. Check out *target/site/cobertura/index.hml* and look at the results.
 
 ### Exercise 2.2
 
 Use the [Hamcrest framework](http://hamcrest.org/JavaHamcrest/) to write more readable unit tests.
+
+### Exercise 2.3 (optional)
+
+Rewrite the entire application using a test-driven approach. Make sure to always create at least one unit test before adding new or changing existing functionality.
+
+To make it more challenging, start over from exercise 1.1. Before doing any refactoring for subsequent exercises, write all necessary unit tests up-front.
 
 
 ## level 3 - Persistence
@@ -103,7 +115,7 @@ Go the extra mile and create an alternative persistence mechanism using the Java
 
 ### Exercise 4.1
 
-Create a REST API to manipulate the phone book and deploy your project to Tomcat. Use tools like *curl* or browser plugins like [RESTClient](https://addons.mozilla.org/de/firefox/addon/restclient/) for Firefox to play around with the application.
+Create a REST API to manipulate the phone book and deploy your project to Tomcat. Use tools like *curl* or browser plug-ins like [RESTClient](https://addons.mozilla.org/de/firefox/addon/restclient/) for Firefox to play around with the application.
 
 ### Exercise 4.2
 
