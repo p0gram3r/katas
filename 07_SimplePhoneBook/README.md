@@ -2,18 +2,18 @@
 
 The goal of this kata is to create a very simple phone book application. 
 
-**Note:** The following instructions assume that the kata is practised in Java. For other languages please use respective frameworks and techniques.
+**Note:** The following instructions assume that the kata is practiced in Java. For other languages please use respective frameworks and techniques.
 
 
 ## Level 1 - Core functionality
 
-In this level we focus on the core funtionality of the phone book: adding and listing entries. 
+In this level we focus on the core functionality of the phone book: adding and listing entries.
 
 To make things a bit easier, we agree on using String as data type for all fields in this project.
 
-### Excercise 1.1
+### Exercise 1.1
 
-Create a class *SimplePhoneBook* and implements the following methods:
+Create a class *SimplePhoneBook* and implement the following methods:
 ``` java
 void add(String name, String number);
 
@@ -31,9 +31,9 @@ name2: number2
 
 Make sure the listing of all names and the ```toString()``` are sorted alphabetically.
 
-### Excercise 1.2
+### Exercise 1.2
 
-Extend the *SimplePhoneBook* so that you can add multiple numbers for a single name. Retreiving the record for a given name should return a Collection of all numbers.
+Extend the *SimplePhoneBook* so that you can add multiple numbers for a single name. Retrieving the record for a given name should return a Collection of all numbers.
 
 The output format of ```toString()``` changes to:
 ```
@@ -47,7 +47,7 @@ name2:
 
 Make sure the numbers per person are sorted alphabetically in the ```toString()``` output.
 
-### Excercise 1.3
+### Exercise 1.3
 
 Extend the *SimplePhoneBook* so that each number is denoted by the type of the number. Possible types are HOME, CELL, WORK, FAX, PAGER. Keep in mind that some people might have two ore more numbers of the same type.
 
@@ -61,33 +61,50 @@ name2:
 (...)
 ```
 
-## level 2 - Persistence
+### Exercise 1.4 (optional)
 
-### Excercise 2.1 
+Add methods to remove specific numbers from a person or the entire person from the phone book entirely. 
+
+## level 2 - Unit testing
+
+### Exercise 2.1
+
+Rewrite the entire application using a test-driven approach. Make sure to always create at least one unit test before adding new or changing existing functionality. 
+
+To make it more challenging, start over from exercise 1.1. Before doing any refactoring for subsequent exercises, write all necessary unit tests up-front.
+
+### Exercise 2.2
+
+Use the [Hamcrest framework](http://hamcrest.org/JavaHamcrest/) to write more readable unit tests.
+
+
+## level 3 - Persistence
+
+### Exercise 3.1
 
 Keeping our records in memory only is not enough: make sure the phone book can be persisted more permanently! Create a mechanism to read and write the entries from/to a file using Java Object serialization.
 
-### Excercise 2.2
+### Exercise 3.2
 
 Extend the persistence layer: use a database to store the records of the phone book. Set up a running database (e.g. MySQL or [HSQLDB](http://hsqldb.org)) and define all tables required for your phone book implementation. Extend your application to be able to connect to the database and 
 
-For this excercise it is sufficient to use plain JDBC. 
+For this Exercise it is sufficient to use plain JDBC.
 
-### Excercise 2.3
+### Exercise 3.3
 
 Time for a slightly more sophisticated persistence layer! Replace the JDBC solution and make use of the simple SQL wrapper framework [JDBI](http://jdbi.org).
 
-### Excercise 2.4 (optional)
+### Exercise 3.4 (optional)
 
 Go the extra mile and create an alternative persistence mechanism using the Java Persistence API (JPA).
 
 
-## level 3 - Going enterprise
+## level 4 - Going enterprise
 
-### Excercise 3.1
+### Exercise 4.1
 
-Create a REST API to manipulate the phone book and deploy your project to Tomcat. Use tools like *curl* or browser plugin like *RESTClient* for Firefox to play around with the application.
+Create a REST API to manipulate the phone book and deploy your project to Tomcat. Use tools like *curl* or browser plugins like [RESTClient](https://addons.mozilla.org/de/firefox/addon/restclient/) for Firefox to play around with the application.
 
-### Excercise 3.2
+### Exercise 4.2
 
 Create a simple Android application that uses the REST API to access the records in the phone book.
