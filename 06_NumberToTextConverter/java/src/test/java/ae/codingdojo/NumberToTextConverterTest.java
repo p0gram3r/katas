@@ -9,6 +9,7 @@ import java.util.Collection;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
@@ -30,18 +31,15 @@ public class NumberToTextConverterTest {
         /* @formatter:on */
     }
 
-    private NumberToTextConverter converter;
-    private int numberToConvert;
-    private String expectedOutput;
+    @Parameter(value = 0)
+    public int numberToConvert;
 
-    public NumberToTextConverterTest(int numberToConvert, String expectedOutput) {
-        this.converter = new NumberToTextConverter();
-        this.numberToConvert = numberToConvert;
-        this.expectedOutput = expectedOutput;
-    }
+    @Parameter(value = 1)
+    public String expectedOutput;
 
     @Test
     public void test() {
+        NumberToTextConverter converter = new NumberToTextConverter();
         assertThat(converter.convert(numberToConvert), is(expectedOutput));
     }
 
