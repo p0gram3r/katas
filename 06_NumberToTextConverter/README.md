@@ -5,21 +5,26 @@ It occurs now and then in real life that people want to write about money, espec
 * $745.00 (amount in numbers)
 * seven hundred forty five dollars (amount in words)
 
+
 ## Goal
 
-The goal of this kata is to write a little converter to convert numbers into words. 
+The goal of this kata is to write a little converter to convert positive integers into words. It is not required to handle zero or negative values.
+
 
 ## Level 1
 
 The converter can handle integer numbers between 1 and 9.
 
+
 ## Level 2
 
 The converter can handle multiples of 10, i.e. 10, 20, ... , 90.
 
+
 ## Level 3
 
 The converter can handle numbers up to 999.
+
 
 ## Level 4
 
