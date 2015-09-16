@@ -1,11 +1,11 @@
-# Kata 5 - BowlingScore
+# coding dojo - bowling score
 
 **TODO**
 
 ## Goal
 
-### Level 1
+## Level 1
 
-### Level 2
+## Level 2
 
-### Level 3
+## Level 3
