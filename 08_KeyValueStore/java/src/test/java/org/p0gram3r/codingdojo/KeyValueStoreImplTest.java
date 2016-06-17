@@ -1,14 +1,14 @@
 package org.p0gram3r.codingdojo;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
-
 import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class KeyValueStoreImplTest {
 
@@ -77,6 +77,18 @@ public class KeyValueStoreImplTest {
     }
 
     @Test
+    public void ensurePutStoresCopyOfValue() {
+        ArrayList<Integer> value = new ArrayList<>();
+        store.put(NAMESPACE1, KEY1, value);
+
+        value.add(42);
+        assertFalse(value.isEmpty());
+
+        ArrayList storedValue = (ArrayList) store.get(NAMESPACE1, KEY1);
+        assertTrue(storedValue.isEmpty());
+    }
+
+    @Test
     public void getExistingKey() {
         Serializable value = "value";
 
@@ -84,7 +96,18 @@ public class KeyValueStoreImplTest {
 
         Serializable retrievedValue = store.get(NAMESPACE1, KEY1);
         assertNotNull(retrievedValue);
-        assertSame(value, retrievedValue);
+        assertEquals(value, retrievedValue);
+    }
+
+    @Test
+    public void getReturnsCopyOfOriginalValue() {
+        Serializable value = "value";
+
+        store.put(NAMESPACE1, KEY1, value);
+
+        Serializable retrievedValue = store.get(NAMESPACE1, KEY1);
+        assertEquals(value, retrievedValue);
+        assertNotSame(value, retrievedValue);
     }
 
     @Test

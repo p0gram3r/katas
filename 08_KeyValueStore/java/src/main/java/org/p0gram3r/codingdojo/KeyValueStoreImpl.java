@@ -1,27 +1,27 @@
 package org.p0gram3r.codingdojo;
 
-import java.io.Serializable;
+import java.io.*;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class KeyValueStoreImpl implements KeyValueStore {
 
-    private Map<String, Map<String, Serializable>> store = new ConcurrentHashMap<>();
+    private Map<String, Map<String, Serializable>> store = new HashMap<>();
 
     @Override
     public void put(String namespace, String key, Serializable value) {
         Map<String, Serializable> inner = null;
 
-        // TODO is this sufficient for thread safety? It should prevent overwriting a newly created inner map.
         synchronized (this) {
             inner = store.get(namespace);
             if (inner == null) {
-                inner = new ConcurrentHashMap<>();
+                inner = new HashMap<>();
                 store.put(namespace, inner);
             }
         }
 
-        inner.put(key, value);
+        Serializable copy = createDeepCopy(value);
+        inner.put(key, copy);
     }
 
     @Override
@@ -31,7 +31,8 @@ public class KeyValueStoreImpl implements KeyValueStore {
             return null;
         }
 
-        return inner.get(key);
+        Serializable value = inner.get(key);
+        return createDeepCopy(value);
     }
 
     @Override
@@ -42,13 +43,26 @@ public class KeyValueStoreImpl implements KeyValueStore {
         }
     }
 
-    public int countNamespaces() {
+    int countNamespaces() {
         return store.size();
     }
 
-    public int sizeOfNamespace(String namespace) {
+    int sizeOfNamespace(String namespace) {
         Map<String, Serializable> inner = store.get(namespace);
         return inner == null ? 0 : inner.size();
     }
 
+    private Serializable createDeepCopy(Serializable value) {
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(baos);
+            oos.writeObject(value);
+
+            ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+            ObjectInputStream ois = new ObjectInputStream(bais);
+            return (Serializable) ois.readObject();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
