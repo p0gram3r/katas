@@ -3,41 +3,40 @@ package org.p0gram3r.codingdojo;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class KeyValueStoreImpl implements KeyValueStore {
 
-    private Map<String, Map<String, Serializable>> store = new HashMap<>();
+    private Map<String, Map<String, byte[]>> store = new ConcurrentHashMap<>();
 
     @Override
     public void put(String namespace, String key, Serializable value) {
-        Map<String, Serializable> inner = null;
+        Map<String, byte[]> inner = null;
 
         synchronized (this) {
             inner = store.get(namespace);
             if (inner == null) {
-                inner = new HashMap<>();
+                inner = new ConcurrentHashMap<>();
                 store.put(namespace, inner);
             }
         }
 
-        Serializable copy = createDeepCopy(value);
-        inner.put(key, copy);
+        inner.put(key, storeInBytes(value));
     }
 
     @Override
     public Serializable get(String namespace, String key) {
-        Map<String, Serializable> inner = store.get(namespace);
+        Map<String, byte[]> inner = store.get(namespace);
         if (inner == null) {
             return null;
         }
 
-        Serializable value = inner.get(key);
-        return createDeepCopy(value);
+        return restoreFromBytes(inner.get(key));
     }
 
     @Override
     public void delete(String namespace, String key) {
-        Map<String, Serializable> inner = store.get(namespace);
+        Map<String, byte[]> inner = store.get(namespace);
         if (inner != null) {
             inner.remove(key);
         }
@@ -48,17 +47,29 @@ public class KeyValueStoreImpl implements KeyValueStore {
     }
 
     int sizeOfNamespace(String namespace) {
-        Map<String, Serializable> inner = store.get(namespace);
+        Map<?, ?> inner = store.get(namespace);
         return inner == null ? 0 : inner.size();
     }
 
-    private Serializable createDeepCopy(Serializable value) {
+    private byte[] storeInBytes(Serializable value) {
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(baos);
             oos.writeObject(value);
 
-            ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+            return baos.toByteArray();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private Serializable restoreFromBytes(byte[] array) {
+        if (array == null) {
+            return null;
+        }
+
+        try {
+            ByteArrayInputStream bais = new ByteArrayInputStream(array);
             ObjectInputStream ois = new ObjectInputStream(bais);
             return (Serializable) ois.readObject();
         } catch (Exception e) {

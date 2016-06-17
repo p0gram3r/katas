@@ -77,6 +77,17 @@ public class KeyValueStoreImplTest {
     }
 
     @Test
+    public void putNull() {
+        Serializable value = null;
+
+        assertEquals(0, store.countNamespaces());
+
+        store.put(NAMESPACE1, KEY1, value);
+        assertEquals(1, store.countNamespaces());
+        assertEquals(1, store.sizeOfNamespace(NAMESPACE1));
+    }
+
+    @Test
     public void ensurePutStoresCopyOfValue() {
         ArrayList<Integer> value = new ArrayList<>();
         store.put(NAMESPACE1, KEY1, value);
