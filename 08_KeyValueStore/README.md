@@ -6,8 +6,8 @@ Your task is to write an IN-MEMORY key/value store that is loosely inspired by R
 Write a set of java classes that support all of these operations. Please note that this is just a DEFINITION of the functionality. Your code could use an entirely different approach to this.
 
 1.`put(namespace:String, key:String, value:Serializable) : void`: stores or updates the `value` that `key` points to in the `namespace`.
-2.`get(namespace:String, key:String) : Serializable?`: retrieves the object identified by `namespace` and `key`.
-3.`delete(namespace:String, key:String) : void`: deletes the object
+1.`get(namespace:String, key:String) : Serializable?`: retrieves the object identified by `namespace` and `key`.
+1.`delete(namespace:String, key:String) : void`: deletes the object
 
 ## More characteristics:
 1. It shall be able to CRUD (create, read, update, delete) simple (serializable) java beans:
