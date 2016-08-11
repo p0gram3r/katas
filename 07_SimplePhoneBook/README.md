@@ -29,7 +29,7 @@ name2: number2
 (...)
 ```
 
-Make sure the listing of all names and the ```toString()``` are sorted alphabetically.
+Make sure the output of ```getAllNames()``` and  ```toString()``` are sorted alphabetically.
 
 ### Exercise 1.2
 
