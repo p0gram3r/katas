@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "a306b6b9-f95d-45e1-8621-41c292fb4694",
+		"name": "finleap-case-study",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "400 - no city param",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "523d0d63-bcff-4bb5-a6dc-3a61018cad3a",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"query param city may not be empty\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/data",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200 - city=Berlin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "130c643a-0031-42ac-806b-a49011c3e688",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"response contains dailyTempAverage\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"dailyTempAverage\");",
+							"});",
+							"pm.test(\"response contains nightlyTempAverage\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"nightlyTempAverage\");",
+							"});",
+							"pm.test(\"response contains pressureAverage\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"pressureAverage\");",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/data?city=Berlin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"data"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "Berlin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "404  - unknown city",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1c6aa54a-e4c2-4bf9-b419-d7973a506d6a",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"no data found for city!\");",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/data?city=ItIsVeryUnlikelyThatACityWithThisNameReallyExists123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"data"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "ItIsVeryUnlikelyThatACityWithThisNameReallyExists123"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

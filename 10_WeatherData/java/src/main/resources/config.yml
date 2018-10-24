@@ -1,0 +1,26 @@
+swagger:
+  resourcePackage: app
+
+
+openWeatherApi:
+  forecastUri: https://api.openweathermap.org/data/2.5/forecast
+  appId: c18644396c1bb73a27288d1b3ab31777
+  units: metric
+  timeoutMillis: 1000
+
+
+server:
+  requestLog:
+    appenders:
+    - type: file
+      currentLogFilename: logs/access.log
+      archivedLogFilenamePattern: logs/access.%d.log.gz
+
+
+weatherDataCache:
+  expireAfterWriteDurationMillis: 5000
+  maxCacheSize: 5000
+
+
+numberOfDaysForForecast: 3
+requestTimeoutMillis: 1500
