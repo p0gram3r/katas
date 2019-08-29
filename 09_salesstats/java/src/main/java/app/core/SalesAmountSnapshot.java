@@ -10,7 +10,7 @@ import static java.util.Objects.requireNonNull;
  * made to minimize the time and memory required to calculate the sales statistics:
  * <ul>
  * <li>Skip the creation and sorting of an array containing all values. In the original class this was required to
- * access the median and quantiles. For the solution of this coding challenge accessing these values is not
+ * access the median and quantiles. For the solution of this coding challenge accessing these values are not
  * necessary</li>
  * <li>Provide a method to get the sum of all values in the snapshot. This is missing in the original and would
  * require another iteration of all values</li>

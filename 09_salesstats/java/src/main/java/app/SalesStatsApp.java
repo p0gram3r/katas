@@ -17,11 +17,6 @@ public class SalesStatsApp extends Application<Configuration> {
     }
 
     @Override
-    public String getName() {
-        return "salesstats-akarstensen";
-    }
-
-    @Override
     public void run(Configuration conf, Environment environment) {
         final Logger logger = LoggerFactory.getLogger(SalesStatsApp.class);
         logger.info("set app configuration to: {}", conf);
