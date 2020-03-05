@@ -1,6 +1,9 @@
 # coding dojo - number to text converter
 
-It occurs now and then in real life that people want to write about money, especially about a certain amount of money. If it comes to cheques or contracts, for example, some nations have laws that state that you should write out the amount in words in addition to the amount in numbers to avoid fraud and mistakes. So if you want to transfer $745 to someone via cheque you have to fill out to fields:
+It occurs now and then in real life that people want to write about money, especially about a certain amount of money.
+If it comes to cheques or contracts, for example, some nations have laws that state that you should write out the
+amount in words in addition to the amount in numbers to avoid fraud and mistakes. So if you want to transfer $745 to
+someone via cheque you have to fill out to fields:
 
 * $745.00 (amount in numbers)
 * seven hundred forty five dollars (amount in words)
@@ -8,7 +11,8 @@ It occurs now and then in real life that people want to write about money, espec
 
 ## Goal
 
-The goal of this kata is to write a little converter to convert positive integers into words. It is not required to handle zero or negative values.
+The goal of this kata is to write a little converter to convert positive integers into words. It is not required to
+handle zero or negative values.
 
 
 ## Level 1
